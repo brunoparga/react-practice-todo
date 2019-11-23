@@ -7,14 +7,19 @@ configure({ adapter: new Adapter() });
 
 const todo = { task: 'TDD a to-do app', done: false }
 const page = shallow(<Todo todo={todo} />);
+let checkbox = page.find('input');
 
 it('Correctly shows task and status', () => {
   expect(page.text()).toEqual('TDD a to-do app');
-  let checkbox = page.find('input');
   expect(checkbox.prop('checked')).toEqual(false);
   checkbox.simulate('change');
   checkbox = page.find('input');
   expect(checkbox.prop('checked')).toEqual(true);
 })
 
-test.todo('Should keep status when reloading')
+test('Keeps status when reloading', () => {
+  const statusBefore = checkbox.prop('checked');
+  page.update();
+  console.log(page.find('input'))
+  expect(page.find('input').prop('checked').not.toEqual(statusBefore))
+})
