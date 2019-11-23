@@ -10,8 +10,7 @@ import { todosReducer } from './reducers';
 
 const reducer = (state, action) => ({ todos: todosReducer(state, action) })
 
-// const initialTodos = [{}]  // This will be dealt with by the API
-const initialTodos = [{ task: 'Task 1', done: false }, { task: 'Task 2', done: true }]
+const initialTodos = [{}]  // This will be dealt with by the API
 const store = createStore(reducer, initialTodos)
 
 ReactDOM.render(

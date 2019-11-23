@@ -16,4 +16,4 @@ const Todo = ({ todo }) => {
   )
 }
 
-export default Todo
+export default Todo;
