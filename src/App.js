@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
+import Todo from './Todo'
 
 function App(props) {
   const [isChecked, setIsChecked] = useState(false)
@@ -8,12 +9,7 @@ function App(props) {
 
   return (
     <div className="App">
-      <label>
-        <input type="checkbox" checked={isChecked}
-          onChange={onChange} />
-        {isChecked ? props.labelOn :
-          props.labelOff}
-      </label>
+      {props.todos.map(todo => <Todo todo={todo} key={todo} />)}
     </div>
   );
 }

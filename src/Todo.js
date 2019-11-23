@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Todo = ({ todo }) => {
-  const handleChange = () => {
-    // TODO: fire a Redux action
-  }
+  const [done, setDone] = useState(todo.done)
+
+  const handleChange = () => { setDone(!done) }
 
   return (
     <label>
-      {todo.text}
-      <input type="checkbox" checked={todo.done}
+      {todo.task}
+      <input type="checkbox" checked={done}
         onChange={handleChange} />
     </label>
   )

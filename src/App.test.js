@@ -1,15 +1,13 @@
 import React from 'react';
 import App from './App';
-import { configure, shallow } from 'enzyme';
+import { configure, render } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
 configure({ adapter: new Adapter() });
 
-test('Checkbox in App changes the text after click', () => {
-  // Render a checkbox with label in the document
-  const checkbox = shallow(<App labelOn="On" labelOff="Off" />);
+const todos = [{ task: 'Task 1', done: false }, { task: 'Task 2', done: true }]
+const app = render(<App todos={todos} />);
 
-  expect(checkbox.text()).toEqual('Off');
-  checkbox.find('input').simulate('change');
-  expect(checkbox.text()).toEqual('On');
+test('App renders both todos', () => {
+  expect(app.text()).toEqual(expect.stringMatching(/1.*2/));
 })
