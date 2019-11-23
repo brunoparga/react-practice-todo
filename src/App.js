@@ -1,12 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
 import Todo from './Todo'
 
-function App(props) {
-  const [isChecked, setIsChecked] = useState(false)
-
-  const onChange = () => setIsChecked(!isChecked)
-
+const App = (props) => {
   return (
     <div className="App">
       {props.todos.map(todo => <Todo todo={todo} key={todo} />)}
