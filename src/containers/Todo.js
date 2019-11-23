@@ -6,11 +6,13 @@ const Todo = ({ todo }) => {
   const handleChange = () => { setDone(!done) }
 
   return (
-    <label>
-      {todo.task}
-      <input type="checkbox" checked={done}
-        onChange={handleChange} />
-    </label>
+    <div>
+      <label>
+        {todo.task}
+        <input type="checkbox" checked={done}
+          onChange={handleChange} />
+      </label>
+    </div>
   )
 }
 

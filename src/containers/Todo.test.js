@@ -20,6 +20,5 @@ it('Correctly shows task and status', () => {
 test('Keeps status when reloading', () => {
   const statusBefore = checkbox.prop('checked');
   page.update();
-  console.log(page.find('input'))
   expect(page.find('input').prop('checked').not.toEqual(statusBefore))
 })
