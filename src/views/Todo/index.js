@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+import { markDone } from '../../actions'
 
 const Todo = ({ todo }) => {
-  const [done, setDone] = useState(todo.done)
+  const [done] = useState(todo.done)
 
-  const handleChange = () => { setDone(!done) }
+  const handleChange = () => { markDone(todo.id); }
 
   return (
     <div>
@@ -16,4 +20,7 @@ const Todo = ({ todo }) => {
   )
 }
 
-export default Todo;
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ markDone }, dispatch)
+
+export default connect(null, mapDispatchToProps)(Todo);
