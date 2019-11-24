@@ -1,4 +1,4 @@
-export const FETCH_TODOS = 'FETCH_TODOS'
+import { FETCH_TODOS } from '../action_types'
 
 export const fetchTodos = () => dispatch => {
   const API_URL = 'http://localhost:3000/';

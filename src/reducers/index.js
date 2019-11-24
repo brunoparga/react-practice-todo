@@ -1,10 +1,5 @@
-import { FETCH_TODOS } from "../actions";
+import { combineReducers } from 'redux';
 
-export const todosReducer = (state, { type, payload }) => {
-  switch(type){
-    case FETCH_TODOS:
-      return payload;
-    default:
-      return state;
-  }
-}
+import todos from './todos';
+
+export default combineReducers({ todos })

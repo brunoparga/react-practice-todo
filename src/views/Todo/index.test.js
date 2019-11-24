@@ -1,5 +1,5 @@
 import React from 'react';
-import Todo from './Todo';
+import Todo from '.';
 import { configure, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 

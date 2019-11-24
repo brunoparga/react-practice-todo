@@ -1,18 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
-import App from './containers/App';
+import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 import './index.css';
-import { todosReducer } from './reducers';
-
-const reducer = (state, action) => ({ todos: todosReducer(state, action) })
-
-const initialTodos = [{}]  // This will be dealt with by the API
-const store = createStore(reducer, initialTodos, applyMiddleware(thunk))
+import store from './store'
 
 ReactDOM.render(
   <Provider store={store}>

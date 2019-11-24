@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import './App.css';
-import Todo from './Todo';
-import { bindActionCreators } from 'redux';
+import './index.css';
+import Todo from '../views/Todo';
 import { fetchTodos } from '../actions';
 
 const App = ({ todos, fetchTodos }) => {
