@@ -7,11 +7,11 @@ import { bindActionCreators } from 'redux';
 import { fetchTodos } from '../actions';
 
 const App = ({ todos, fetchTodos }) => {
-  useEffect(() => fetchTodos())
+  useEffect(() => fetchTodos(), [fetchTodos])
 
   return (
     <div className="App">
-      {todos.map(todo => <Todo todo={todo} key={todo} />)}
+      {todos.map((todo, index) => <Todo todo={todo} key={`${index} - ${todo.task}`} />)}
     </div>
   );
 }
