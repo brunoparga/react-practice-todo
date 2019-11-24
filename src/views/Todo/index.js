@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import { markDone } from '../../actions'
 
-const Todo = ({ todo }) => {
+const Todo = ({ todo, markDone }) => {
   const [done] = useState(todo.done)
 
   const handleChange = () => { markDone(todo.id); }

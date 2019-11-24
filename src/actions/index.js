@@ -9,7 +9,7 @@ export const fetchTodos = () => dispatch => {
 }
 
 export const markDone = id => dispatch => {
-  fetch(`${API_URL}/${id}`)
+  fetch(`${API_URL}${id}`, { method: 'PUT' })
     .then(response => response.json())
     .then(payload => dispatch({ type: MARK_DONE, payload }))
 }
