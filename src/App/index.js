@@ -1,24 +1,19 @@
 import React, { useEffect } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import './index.css';
 import Todo from '../views/Todo';
 import { fetchTodos } from '../actions';
 
-const App = ({ todos, fetchTodos }) => {
-  useEffect(() => fetchTodos(), [fetchTodos])
-
+const App = () => {
+  const dispatch = useDispatch()
+  const todos = useSelector(store => store.todos)
+  useEffect(() => dispatch(fetchTodos()), [dispatch])
   return (
     <div className="App">
-      {todos.map((todo, index) => <Todo todo={todo} key={`${index} - ${todo.task}`} />)}
+      {todos.map((todo) => <Todo todo={todo} key={todo.id} />)}
     </div>
   );
 }
 
-const mapStateToProps = state => ({ todos: state.todos })
-
-const mapDispatchToProps = dispatch =>
-  bindActionCreators({ fetchTodos }, dispatch)
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
