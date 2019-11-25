@@ -1,19 +1,18 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
-import { markDone } from '../../actions'
+import { markDone, removeTodo } from '../../actions'
 
 const Todo = ({ todo }) => {
   const dispatch = useDispatch()
-  const handleChange = () => { dispatch(markDone(todo.id)); }
-
   return (
     <div>
       <label>
         {todo.task}
         <input type="checkbox" checked={todo.done}
-          onChange={handleChange} />
+          onChange={() => { dispatch(markDone(todo.id)) }} />
       </label>
+      <small onClick={() => dispatch(removeTodo(todo.id))}>(delete)</small>
     </div>
   )
 }

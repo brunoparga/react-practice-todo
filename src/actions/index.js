@@ -1,4 +1,4 @@
-import { FETCH_TODOS, MARK_DONE, CREATE_TODO } from '../action_types'
+import { FETCH_TODOS, MARK_DONE, CREATE_TODO, REMOVE_TODO } from '../action_types'
 
 const API_URL = 'http://localhost:3000/';
 
@@ -22,4 +22,9 @@ export const createTodo = task => dispatch => {
   })
     .then(response => response.json())
     .then(payload => dispatch({ type: CREATE_TODO, payload }))
+}
+
+export const removeTodo = (id) => {
+  fetch(`http://localhost:3000/${id}`, { method: 'DELETE' })
+  return { type: REMOVE_TODO, payload: id }
 }
