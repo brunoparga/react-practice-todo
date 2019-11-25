@@ -1,26 +1,21 @@
-import React, { useState } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import React from 'react';
+import { useDispatch } from 'react-redux';
 
 import { markDone } from '../../actions'
 
-const Todo = ({ todo, markDone }) => {
-  const [done] = useState(todo.done)
-
-  const handleChange = () => { markDone(todo.id); }
+const Todo = ({ todo }) => {
+  const dispatch = useDispatch()
+  const handleChange = () => { dispatch(markDone(todo.id)); }
 
   return (
     <div>
       <label>
         {todo.task}
-        <input type="checkbox" checked={done}
+        <input type="checkbox" checked={todo.done}
           onChange={handleChange} />
       </label>
     </div>
   )
 }
 
-const mapDispatchToProps = dispatch =>
-  bindActionCreators({ markDone }, dispatch)
-
-export default connect(null, mapDispatchToProps)(Todo);
+export default Todo;
