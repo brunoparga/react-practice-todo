@@ -7,17 +7,17 @@ import Form from '../views/Form';
 import { fetchTodos, createTodo } from '../actions';
 
 const App = () => {
-  const dispatch = useDispatch()
-  const todos = useSelector(store => store.todos)
-  useEffect(() => dispatch(fetchTodos()), [dispatch])
-  const submit = task => dispatch(createTodo(task))
+  const dispatch = useDispatch();
+  const todos = useSelector((store) => store.todos);
+  useEffect(() => dispatch(fetchTodos()), [dispatch]);
+  const submit = (task) => dispatch(createTodo(task));
 
   return (
     <div className="App">
-      <Form onSubmit={submit}/>
+      <Form onSubmit={submit} />
       {todos.map((todo) => <Todo todo={todo} key={todo.id} />)}
     </div>
   );
-}
+};
 
 export default App;
