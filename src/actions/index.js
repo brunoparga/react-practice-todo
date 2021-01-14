@@ -2,7 +2,7 @@ import {
   FETCH_TODOS, MARK_DONE, CREATE_TODO, REMOVE_TODO,
 } from '../action_types';
 
-const API_URL = 'http://localhost:3000/';
+const API_URL = 'http://localhost:3000/todos/';
 
 export const fetchTodos = () => (dispatch) => {
   fetch(API_URL)
@@ -17,7 +17,7 @@ export const markDone = (id) => (dispatch) => {
 };
 
 export const createTodo = (task) => (dispatch) => {
-  fetch(`${API_URL}`, {
+  fetch(API_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(task),
@@ -27,6 +27,6 @@ export const createTodo = (task) => (dispatch) => {
 };
 
 export const removeTodo = (id) => {
-  fetch(`http://localhost:3000/${id}`, { method: 'DELETE' });
+  fetch(`${API_URL}${id}`, { method: 'DELETE' });
   return { type: REMOVE_TODO, payload: id };
 };
